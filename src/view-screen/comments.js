@@ -24,11 +24,12 @@ export const elementoPost = (comentario, index) => {
       <input id="modify" type="button" value="modificar" class="button">
       </section>
       <section class="comment-opinion">
-      <button class="icon-heart iconClass" id="reactionPostLove-${index}" onClick="reactionPostLove"></button>
+      <button class="icon-heart iconClass" id="reactionPostLove-${index}"></p></button>
       <button type="button" id="comentarComentario" <i class="icon-chat iconClass"></i>comentar</button>
       </section>
     </div>
   </div> `;
+
   // eliminar post
   const registroPosts = JSON.parse(getItemLocalStorage('posts'));
   const deletePost = onlyComment.querySelector(`#delete-${index}`);
@@ -49,7 +50,7 @@ export const elementoPost = (comentario, index) => {
     });
   });
 
-  // esditar post
+  // editar post
 
   const editPost = onlyComment.querySelector(`#modify-${index}`);
   editPost.addEventListener('click', () => {
@@ -78,6 +79,21 @@ export const elementoPost = (comentario, index) => {
     postsActuales.forEach((element, indice) => {
       const newNodoPost = elementoPost(element, indice);
       divPadrePosts.appendChild(newNodoPost);
+    });
+  });
+
+  // me gusta
+  let contadorLove = 0;
+  const registerReactionCountLove = JSON.parse(localStorage.getItem('posts'));
+  const reactionPostLove = onlyComment.querySelector(`#reactionPostLove-${index}`);
+  reactionPostLove.addEventListener('click', () => {
+    registerReactionCountLove.forEach((element, index1love) => {
+      if (index1love === index) {
+        contadorLove += 1;
+        onlyComment.querySelector('#cantidad').innerHTML = contadorLove;
+        // eslint-disable-next-line no-param-reassign
+        element.meGusta = contadorLove;
+      }
     });
   });
 
