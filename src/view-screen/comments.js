@@ -20,11 +20,11 @@ export const elementoPost = (comentario, index) => {
       </section>
       <section class="comment-content">${comentario.texto}</section>
       <section id="ModifyComment" class ="none">
-      <textarea id="story" name="story" rows="10" cols="20">${comentario.texto}</textarea>
+      <textarea id="story" name="story" rows="2%" cols="95%">${comentario.texto}</textarea>
       <input id="modify" type="button" value="modificar" class="button">
       </section>
       <section class="comment-opinion">
-      <button class="icon-heart iconClass" id="reactionPostLove-${index}"></p></button>
+      <button class="icon-heart iconClass" id="reactionPostLove-${index}"><p id="comentario">${comentario.meGusta}</p></button>
       <button type="button" id="comentarComentario" <i class="icon-chat iconClass"></i>comentar</button>
       </section>
     </div>
@@ -83,19 +83,38 @@ export const elementoPost = (comentario, index) => {
   });
 
   // me gusta
-  let contadorLove = 0;
+  // let contadorLove = 0;
   const registerReactionCountLove = JSON.parse(localStorage.getItem('posts'));
   const reactionPostLove = onlyComment.querySelector(`#reactionPostLove-${index}`);
   reactionPostLove.addEventListener('click', () => {
+    const nuevoArr = [];
     registerReactionCountLove.forEach((element, index1love) => {
       if (index1love === index) {
-        contadorLove += 1;
-        onlyComment.querySelector('#cantidad').innerHTML = contadorLove;
-        // eslint-disable-next-line no-param-reassign
-        element.meGusta = contadorLove;
+        const nombreDeUsuario = element.nombre;
+        const textoDelPost = element.texto;
+        const tipoDePost = element.tipo;
+        const lovePost = element.meGusta;
+        const nuevoObj = {
+          nombre: nombreDeUsuario,
+          texto: textoDelPost,
+          fecha: new Date(),
+          tipo: tipoDePost,
+          meGusta: lovePost + 1,
+        };
+        nuevoArr.push(nuevoObj);
+      } else {
+        nuevoArr.push(element);
       }
     });
+    console.log(nuevoArr);
+    saveItemLocalStorage('posts', JSON.stringify(nuevoArr));
+    const loveActuales = JSON.parse(getItemLocalStorage('posts'));
+    const divPadrePosts = document.querySelector('#commits');
+    divPadrePosts.innerHTML = '';
+    loveActuales.forEach((element, indice) => {
+      const newNodoPost = elementoPost(element, indice);
+      divPadrePosts.appendChild(newNodoPost);
+    });
   });
-
   return onlyComment;
 };

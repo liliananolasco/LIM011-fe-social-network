@@ -39,12 +39,14 @@ export const saveItemLocalStorage = (nombreDeItem, dataParaGuardar) => {
 
 // crear un objeto post y subirlo a un array
 
-export const agregaObjPostAlArr = (textoDelPost, dataDePosts, nombreDeUsuario, tipoDePost) => {
+export const agregaObjPostAlArr = (textoDelPost, dataDePosts, nombreDeUsuario,
+  tipoDePost, lovePost) => {
   const objPost = {
     nombre: nombreDeUsuario,
     texto: textoDelPost,
     fecha: new Date(),
     tipo: tipoDePost,
+    meGusta: lovePost,
   };
 
   if (dataDePosts === null) {
