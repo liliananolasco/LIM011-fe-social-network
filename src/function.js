@@ -1,67 +1,61 @@
-let registers = [];
-let i = 0;
-
 export const correctRegister = (name, lastname, birthday, email, password, confirmPassword) => {
   if (name === '' || lastname === '' || birthday === '' || email === '' || password === '' || confirmPassword === '') {
-    // eslint-disable-next-line no-alert
-    alert('Por favor completar campo');
-  } else {
-    // eslint-disable-next-line no-console
-    console.log('register');
-    registers = JSON.parse(localStorage.getItem('registro'));
-    if (registers === null) {
-      registers = [];
-    }
-    registers.push({
-      nombre: name,
-      apellido: lastname,
-      id: i += 1,
-      cumpleaños: birthday,
-      correo: email,
-      contraseña: password,
-      confirmarContraseña: confirmPassword,
-    });
-    // eslint-disable-next-line no-console
-    console.log(registers);
-
-    localStorage.setItem('registro', JSON.stringify(registers));
+    return false;
   }
-  /* console.log(register); */
+  return true;
 };
 
+export const AddObjRegisterToArray = (nameUser, lastnameUser, birthdayUser,
+  emailUser, passwordUser, confirmPasswordUser, dataDeRegister) => {
+  const registerObj = {
+    nombre: nameUser,
+    apellido: lastnameUser,
+    cumpleaños: birthdayUser,
+    correo: emailUser,
+    contraseña: passwordUser,
+    confirmarContraseña: confirmPasswordUser,
+  };
 
-// /* promesas para obtener o guardar datos en localStorage */
-
-export const guardarPost = (post) => {
-  return new Promise (
-    (resolve, reject) => {
-      if (localStorage.getItem('posts') === null) {
-        const objPost1 = {
-          nombre: localStorage.getItem('nombreUsuario'),
-          texto: post,
-          fecha: new Date(),
-        };
-        localStorage.setItem('posts', JSON.stringify([objPost1]));
-      } else {
-        const dataPosts1 = JSON.parse(localStorage.getItem('posts'));
-        const objPost = {
-          nombre: localStorage.getItem('nombreUsuario'),
-          texto: post,
-          fecha: new Date(),
-        };
-        dataPosts1.push(objPost);
-        localStorage.setItem('posts', JSON.stringify(dataPosts1));
-      }
-      resolve(JSON.parse(localStorage.getItem('posts')));
-    }
-  );
+  if (dataDeRegister === null) {
+    const arrToRegister = [];
+    arrToRegister.push(registerObj);
+    return arrToRegister;
+  }
+  dataDeRegister.push(registerObj);
+  return dataDeRegister;
 };
 
+/* obtener o guardar datos en localStorage */
 
-/* const obtenerDatos = obtener => {
-  return new Promise ((resolve, reject) => {
-    if (registro.find(obtener === JSON.parse(localStorage.getItem('posts')))) {
-      resolve (registro)
-    }
-  });
-}; */
+export const getItemLocalStorage = (nombreDeItem) => {
+  const data = localStorage.getItem(nombreDeItem);
+  return data;
+};
+
+export const saveItemLocalStorage = (nombreDeItem, dataParaGuardar) => {
+  localStorage.setItem((typeof (nombreDeItem) === 'string') ? nombreDeItem : JSON.stringify(nombreDeItem),
+    (typeof (dataParaGuardar) === 'string') ? dataParaGuardar : JSON.stringify(dataParaGuardar));
+};
+
+// crear un objeto post y subirlo a un array
+
+export const agregaObjPostAlArr = (textoDelPost, dataDePosts, nombreDeUsuario,
+  tipoDePost, lovePost) => {
+  const objPost = {
+    nombre: nombreDeUsuario,
+    texto: textoDelPost,
+    fecha: new Date(),
+    tipo: tipoDePost,
+    meGusta: lovePost,
+  };
+
+  if (dataDePosts === null) {
+    const arr = [];
+    arr.push(objPost);
+    return arr;
+  }
+  dataDePosts.push(objPost);
+  return dataDePosts;
+};
+
+export const suma = (a, b) => b + a;
