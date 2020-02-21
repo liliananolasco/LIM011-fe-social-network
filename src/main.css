@@ -5,35 +5,29 @@
 }
 
 body {
-  background: #fff;
-  color: rgba(255, 255, 255, 0.87);
+  color:  #e8405b;
   font-family: 'Montserrat', sans-serif;
   background: url(./imagen/fondo.jpg) no-repeat center top fixed;
-  overflow-y: hidden;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
-h1 {
-    width: 50%;
+.iconClass{
+  color: #551a8b;
 }
 
 .logo {
-    position: absolute  ;
-    margin: 1rem 0 0 3.8rem;
-}
-
-.logo-computer{
-    display: none;
-    position: relative;
-    width: 9rem;
-    height: 12rem;
+  position: absolute  ;
+  margin: 0.8rem 0 0 1.2rem;
 }
 
 header {
-    position: fixed;
-    width: 100%;
-    height: 7rem;
-    top: 0;
-    left: 0;
+  position: none;
+  width: 100%;
+  height: 7rem;
+  top: 0;
+  left: 0;
 }
 
 /*------------------------------------------------------------------------
@@ -45,11 +39,11 @@ Style for Menu
 }
 
 .container #label-bar-menu{
-    position: relative;
-    display: flex;
-    float: right;
-    background-position-x: 30px;
-    margin: 25px 10px 0 0;
+  position: relative;
+  display: flex;
+  float: right;
+  background-position-x: 30px;
+  margin: 25px 10px 0 0;
 }
 
 nav ul li a {
@@ -58,8 +52,8 @@ nav ul li a {
 }
 
 .container {
-    width: 100%;
-    margin: auto;
+  width: 100%;
+  margin: auto;
 }
 
 .menu {
@@ -68,23 +62,22 @@ nav ul li a {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(94, 11, 94, 0.89);
+  background: #e8405b;
   transition: all 0.7s;
   transform: translateX(-100%);
 }
 
 .menu ul li a {
   display: block;
-  color: #fff;
   height: 10px;
   padding: 20px;
   text-decoration: none;
-  border-bottom: 2px solid #fff;
+
 }
 
 .menu ul li a:hover {
-    cursor: pointer;
-    background: rgba(180, 130, 180, 0.89);
+  cursor: pointer;
+  background: #e8405b;
 }
 
 #bar-menu:checked~.menu {
@@ -92,97 +85,114 @@ nav ul li a {
 }
 
 /*------------------------------------------------------------------------
- Style for views
+Style for views
 ------------------------------------------------------------------------*/
 nav ul li a::selection ~.menu{
-    transition: all 0.7s;
-    transform: translateX(-100%); 
+  transition: all 0.7s;
+  transform: translateX(-100%); 
 } 
 
 /*------------------------------------------------------------------------
- Style for home
+Style for login
 ------------------------------------------------------------------------*/
-#home{
-    width: 100%;
-    height: auto;
-    justify-content: center;
+.wrapper{
+  display: flex;
+  flex-wrap:wrap ;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid white;
+  background-color: blue; */
+
 }
-.titulo{
-    margin: 0 5px 6px 50px;
-    font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+.partLogin{
+  padding: 1rem;
+  margin: 0 1em 0 2em;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  /* justify-content: center; */
+
+
 }
-.inputsHome{
-    width: 150px;
-    margin: 5px;
+
+.imgLogin{
+  width: 50%;
+  margin:  0 1em 0 1em;
+  flex:  2 1 auto;
+  display: flex;
+
 }
-.marginHome{
-    margin: 5px;
-}
-.key{
-    margin-right: 0.65rem;
-}
-.icons{
-    margin: 0 5px 6px 60px;
-}
+
 .button{
-    width: 100px;
-    height: 30px;
-    margin: 10px 10px 10px 60px;
-    border-radius: 20px;
-    background-color: rgba(94, 11, 94, 0.89);
-    color: seashell;
+  font-family: 'Montserrat', sans-serif;
+  width: 100px;
+  height: 30px;
+  margin: 10px 10px 10px 60px;
+  background-color:  #e8405b;
+  color: #fff;
+  border-radius: 4px;
 }
 
 /*------------------------------------------------------------------------
-Style for Register
+Style for register
 ------------------------------------------------------------------------*/
 
-.inputs-register{
-    margin: 10px 30px 10px 30px;
-    border-radius: 5px;
-    width: 160px;
-    height: 20px;
-}
-.container-register{
-    margin-left: 1rem;
-}
+/* input{
+  margin: 10px 30px 10px 30px;
+  width: 160px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+
+} */
+
 .label{
-    font-weight: 500;
-    box-shadow: 2px 2px 2px 1px rgba(202, 143, 143, 0.6);
+  font-weight: 500;
 }
-/*----------------  --------------------------------------------------------
- Style for foro
+
+
+/*------------------------------------------------------------------------
+Style for foro
 ------------------------------------------------------------------------*/
 .foto{
     width: 30px;
     height: auto;
 }
 
+.ePosts{
+  width: 70%; 
+  height: 90px;
+  margin: 5%;
+  display: inline-block
+  
+    /* flex-direction: row;
+  flex-wrap: nowrap; */
+}
+
 /*------------------------------------------------------------------------
 Style for footer
 ------------------------------------------------------------------------*/
 
-.footer {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    margin-top: 7rem;
-    background: url(./imagen/footer.png);
-    font-size: 10px;
-    width: 100%;
+footer {
+  color: #551a8b;
+  margin: 0.8rem;
+  text-align: left;
+  font-size: 12px;
 }
 
 /*------------------------------------------------------------------------
- Style for container-main
+Style for container-main
 ------------------------------------------------------------------------*/
 
 #container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    margin: 100px 0 0 0;
+  display: flex;
+  flex-wrap: nowrap;
+  /* justify-content: center; */
+  width: 70%;
+  height: auto;
+  border: 0 ;
+  padding: 20px;
+  /* margin: 100px 0 0 0; */
 }
 
 @media (min-width:600px){
@@ -241,22 +251,22 @@ span{
 color:black;
 }
 .comment-box .comment-head {
-    background: #FCFCFC;
-    padding: 5px 12px;
-    border-bottom: 1px solid #E5E5E5;
-    overflow: hidden;
-    border-radius: 4px 4px 0 0;
-    color: black;
+  background: #FCFCFC;
+  padding: 5px 12px;
+  border-bottom: 1px solid #E5E5E5;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  color: black;
 }
 
 .comment-opinion {
-    background: #FCFCFC;
-    padding: 5px 12px;
-    border-bottom: 1px solid #E5E5E5;
-    overflow: hidden;
-    border-radius: 4px 4px 0 0;
-    display: flex;
-    color: black;
+  background: #FCFCFC;
+  padding: 5px 12px;
+  border-bottom: 1px solid #E5E5E5;
+  overflow: hidden;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  color: black;
 }
 .comment-head{
   display: flex;
@@ -264,8 +274,7 @@ color:black;
 
 .comment-name.by-author{
   content: 'autor';
-  /*background: #03658c;*/
-  color: #03658c;
+  color:  #e8405b;
   font-size: 12px;
   padding: 3px 5px;
   font-weight: 700;
@@ -274,7 +283,13 @@ color:black;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-#commit{
-  width: 150%;
-  height: 90px;
+.none {
+  display: none !important;
+}
+.img-princial{
+  max-width: 400px;
+  min-width: 250px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
